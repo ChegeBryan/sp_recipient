@@ -11,10 +11,13 @@ class DonorProvider with ChangeNotifier {
 
   Status get actionStatus => _actionStatus;
 
-  Future<Map<String, dynamic>> pickDonor(int donor) async {
+  Future<Map<String, dynamic>> pickDonor(int donor, int recipient) async {
     var result;
 
-    final Map<String, dynamic> data = {'id': donor.toString()};
+    final Map<String, dynamic> data = {
+      'donor_id': donor.toString(),
+      'recipient_id': recipient.toString()
+    };
 
     _actionStatus = Status.InProgress;
     notifyListeners();
@@ -49,6 +52,25 @@ class DonorProvider with ChangeNotifier {
     var result;
 
     Response res = await get(Uri.parse(BackendUrl.getDonors));
+
+    final Map<String, dynamic> responseData = jsonDecode(res.body);
+
+    if (!responseData['error']) {
+      result = {'status': true, 'data': responseData['data']};
+    } else {
+      result = {'status': false, 'message': responseData['message']};
+    }
+    return result;
+  }
+
+  Future<Map<String, dynamic>> getDonor(int id) async {
+    var result;
+
+    final Map<String, dynamic> data = {
+      'id': id.toString(),
+    };
+
+    Response res = await post(Uri.parse(BackendUrl.getDonor), body: data);
 
     final Map<String, dynamic> responseData = jsonDecode(res.body);
 

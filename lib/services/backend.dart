@@ -1,6 +1,6 @@
 class BackendUrl {
   // change this to be from environment/constant id
-  static const String baseUrl = 'https://sp-db001.loca.lt';
+  static const String baseUrl = 'https://sp-db002.loca.lt';
 
   // auth URLs
   static const String login = baseUrl + '/auth/login.php';
@@ -8,6 +8,7 @@ class BackendUrl {
 
   // donors url
   static const String getDonors = baseUrl + '/recipient/getDonors.php';
+  static const String getDonor = baseUrl + '/recipient/getDonor.php';
   static const String saveDonor = baseUrl + '/recipient/saveDonor.php';
   static const String updateDonorChoice =
       baseUrl + '/recipient/updateDonorChoice.php';

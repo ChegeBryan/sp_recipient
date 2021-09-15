@@ -29,7 +29,15 @@ class DonorScreen extends StatelessWidget {
             return ListView.separated(
               itemBuilder: (BuildContext context, int index) => ListTile(
                 onTap: () {
-                  Navigator.pushNamed(context, '/donorDetails');
+                  Navigator.pushNamed(
+                    context,
+                    '/donorDetails',
+                    arguments: {
+                      'donor_name': snapshot.data!['data'][index]['donor_name'],
+                      'sperm_bank': snapshot.data!['data'][index]['sb_name'],
+                      'donor_id': snapshot.data!['data'][index]['donor_id'],
+                    },
+                  );
                 },
                 leading: Icon(Icons.person),
                 title: Text(snapshot.data!['data'][index]['donor_name']),
@@ -41,7 +49,12 @@ class DonorScreen extends StatelessWidget {
                     Navigator.pushNamed(
                       context,
                       '/donorDetails',
-                      arguments: snapshot.data!['data'][index]['donor_id'],
+                      arguments: {
+                        'donor_name': snapshot.data!['data'][index]
+                            ['donor_name'],
+                        'sperm_bank': snapshot.data!['data'][index]['sb_name'],
+                        'donor_id': snapshot.data!['data'][index]['donor_id'],
+                      },
                     );
                   },
                   icon: Icon(Icons.keyboard_arrow_right),

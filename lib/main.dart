@@ -7,6 +7,7 @@ import 'package:sp_recipient/services/user.dart';
 import 'package:sp_recipient/util/shared_preferences.dart';
 import 'package:sp_recipient/views/auth/screens/login.dart';
 import 'package:sp_recipient/views/auth/screens/register.dart';
+import 'package:sp_recipient/views/screens/donor_details_screen.dart';
 import 'package:sp_recipient/views/screens/donors_screen.dart';
 
 void main() {
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
           '/login': (context) => LoginScreen(),
           '/register': (context) => RegisterScreen(),
           '/donors': (context) => DonorScreen(),
+          '/donorDetails': (context) => DonorDetailsScreen(),
         },
       ),
     );
